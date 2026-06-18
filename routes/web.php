@@ -19,6 +19,11 @@ Route::prefix('admin')->group(function () {
 
     // rooms
     Route::get('/rooms',[AdminRooms::class,'index'])->name('index-rooms');
+    // create room
+    Route::get('room/create',[AdminRooms::class,'showCreateForm'])->name('room-create');
+    Route::post('/create',[AdminRooms::class,'create'])->name('room-create-submit');
+    // detail rooms
+    Route::get('/rooms/{id}',[AdminRooms::class,'view'])->name('room-detail');
 
     // category
     Route::get('/category', [Category::class, 'index'])->name('index-category');

@@ -4,7 +4,7 @@
 
 <h1>Daftar Ruangan</h1>
 
-<a>
+<a href="{{ route('room-create') }}">
     Tambah Ruangan
 </a>
 
@@ -15,6 +15,7 @@
         <tr>
             <th>ID</th>
             <th>Nama Ruangan</th>
+            <th>Kategori</th>
             <th>Kode</th>
             <th>Gedung</th>
             <th>Lantai</th>
@@ -31,6 +32,8 @@
 
                 <td>{{ $room->name }}</td>
 
+                <td>{{ $room->category->name }}</td>
+
                 <td>{{ $room->code }}</td>
 
                 <td>{{ $room->building }}</td>
@@ -44,7 +47,7 @@
                 </td>
 
                 <td>
-                    <a >
+                    <a href="{{ route('room-detail', $room->id) }}">
                         Detail
                     </a>
 
