@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@vite(['resources/css/admin/rooms/view.css'])
 @section('content')
 
 <h1>Detail Ruangan</h1>
@@ -79,11 +79,15 @@
 
 <div>
     @if ($view->image)
+
+    <figure class="container-image-view">
+
         <img
-            src="{{ asset('storage/' . $view->image) }}"
-            alt="{{ $view->name }}"
-            width="500"
+        src="{{ asset('uploads/rooms/' . $view->image) }}"
+        alt="{{ $view->name }}"
+        width="500"
         >
+    </figure>
     @else
         <p>Belum ada gambar ruangan.</p>
     @endif

@@ -17,7 +17,7 @@ class rooms extends Model
         'name',
         'code',
         'category_id',
-        'buiding',
+        'building',
         'floor',
         'capacity',
         'description',

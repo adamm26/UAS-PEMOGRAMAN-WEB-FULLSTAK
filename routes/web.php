@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AdminAuth;
 use App\Http\Controllers\Admin\Admin;
 use App\Http\Controllers\Admin\Category;
 use App\Http\Controllers\Admin\AdminRooms;
+use App\Http\Controllers\Admin\AdminUsers;
 use App\Http\Controllers\Auth\Signup;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,21 @@ Route::prefix('admin')->group(function () {
     // dashboard
     Route::get('/dashboard', [Admin::class, 'index'])->name('index');
 
+    // user
+    Route::get('/users',[AdminUsers::class,'index'])->name('user-index');
+
     // rooms
-    Route::get('/rooms',[AdminRooms::class,'index'])->name('index-rooms');
+    Route::get('/rooms', [AdminRooms::class, 'index'])->name('index-rooms');
     // create room
-    Route::get('room/create',[AdminRooms::class,'showCreateForm'])->name('room-create');
-    Route::post('/create',[AdminRooms::class,'create'])->name('room-create-submit');
+    Route::get('/room/create', [AdminRooms::class, 'showCreateForm'])->name('room-create');
+    Route::post('/createroom', [AdminRooms::class, 'create'])->name('room-submit');
     // detail rooms
-    Route::get('/rooms/{id}',[AdminRooms::class,'view'])->name('room-detail');
+    Route::get('/rooms/{id}', [AdminRooms::class, 'view'])->name('room-detail');
+    // update room
+    Route::get('/room/{id}', [AdminRooms::class, 'roomUpdateForm'])->name('room-update-form');
+    Route::post('/roomupdate/{id}', [AdminRooms::class, 'updateRoom'])->name('room-update-submit');
+    // hapus room
+    Route::delete('/destroyroom/{id}',[AdminRooms::class,'destroyRoom'])->name('destroy-room');
 
     // category
     Route::get('/category', [Category::class, 'index'])->name('index-category');

@@ -1,0 +1,12 @@
+.imagePreview {
+    height: 200px;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.imagePreview img {
+    display: none;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}

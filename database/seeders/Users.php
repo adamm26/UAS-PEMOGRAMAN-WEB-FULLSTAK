@@ -17,6 +17,7 @@ class Users extends Seeder
         //
 
         $users = [
+            // Data Admin Existing
             [
                 'name' => 'Dimas Widy',
                 'email' => 'dimas@gmail.com',
@@ -53,6 +54,37 @@ class Users extends Seeder
                 'password' => 'danny123',
                 'role' => 'admin',
             ],
+
+            [
+                'name' => 'Budi Santoso',
+                'email' => 'budi@gmail.com',
+                'password' => 'budi123',
+                'role' => 'customer',
+            ],
+            [
+                'name' => 'Siti Aminah',
+                'email' => 'siti@gmail.com',
+                'password' => 'siti123',
+                'role' => 'customer',
+            ],
+            [
+                'name' => 'Andi Wijaya',
+                'email' => 'andi@gmail.com',
+                'password' => 'andi123',
+                'role' => 'customer',
+            ],
+            [
+                'name' => 'Dewi Lestari',
+                'email' => 'dewi@gmail.com',
+                'password' => 'dewi123',
+                'role' => 'customer',
+            ],
+            [
+                'name' => 'Fajar Ramadhan',
+                'email' => 'fajar@gmail.com',
+                'password' => 'fajar123',
+                'role' => 'customer',
+            ],
         ];
 
         foreach ($users as $user) {
@@ -60,7 +92,7 @@ class Users extends Seeder
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'password' => Hash::make($user['password']),
-                'role'     => $user['role'],
+                'role' => $user['role'],
             ]);
         }
     }
