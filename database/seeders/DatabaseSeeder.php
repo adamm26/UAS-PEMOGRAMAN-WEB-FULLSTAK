@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             Users::class,
             roomcategory::class,
             rooms::class,
+            roomfacilities::class
+
+
         ]);
 
         User::factory()->create([

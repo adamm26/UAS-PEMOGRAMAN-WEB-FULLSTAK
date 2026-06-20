@@ -20,7 +20,11 @@ Route::prefix('admin')->group(function () {
 
     // user
     Route::get('/users',[AdminUsers::class,'index'])->name('user-index');
-
+    // create user
+    Route::get('/user/create',[AdminUsers::class,'showFromUser'])->name('user-create-form');
+    Route::post('userSubmit',[AdminUsers::class,'submitUser'])->name('submit-user');
+    // view detail
+    Route::get('/user/detail/{id}',[AdminUsers::class,'detailUser'])->name('user-view');
     // rooms
     Route::get('/rooms', [AdminRooms::class, 'index'])->name('index-rooms');
     // create room
@@ -33,6 +37,11 @@ Route::prefix('admin')->group(function () {
     Route::post('/roomupdate/{id}', [AdminRooms::class, 'updateRoom'])->name('room-update-submit');
     // hapus room
     Route::delete('/destroyroom/{id}',[AdminRooms::class,'destroyRoom'])->name('destroy-room');
+    // update user
+    Route::get('/user/update/{id}',[AdminUsers::class,'updateUserForm'])->name('update-user-form');
+    Route::post('/updateUser/{id}',[AdminUsers::class,'updateUser'])->name('user-update-submit');
+    // destroy user
+    Route::delete('/destroyUser/{id}',[AdminUsers::class,'destroyUser'])->name('destroy-user');
 
     // category
     Route::get('/category', [Category::class, 'index'])->name('index-category');

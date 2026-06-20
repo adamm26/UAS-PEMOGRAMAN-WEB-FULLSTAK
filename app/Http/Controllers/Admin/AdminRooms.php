@@ -19,7 +19,7 @@ class AdminRooms extends Controller
 
     public function view($id)
     {
-        $view = rooms::findOrFail($id);
+        $view = rooms::with('facilities')->findOrFail($id);
 
         // dd($view);
 

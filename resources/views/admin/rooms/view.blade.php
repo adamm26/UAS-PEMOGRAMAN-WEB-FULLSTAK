@@ -93,13 +93,31 @@
     @endif
 </div>
 
+
+<h3>Fasilitas Ruangan</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nama Fasilitas</th>
+            <th>Jumlah</th>
+            <th>Kondisi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($view->facilities as $facility)
+            <tr>
+                <td>{{ $facility->name }}</td>
+                <td>{{ $facility->quantity }}</td>
+                <td>{{ $facility->condition }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
 <br>
 
-<a >
-    Edit
-</a>
 
-|
 
 <a href="{{ route('index-rooms') }}">
     Kembali
