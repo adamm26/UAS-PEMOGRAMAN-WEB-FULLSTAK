@@ -2,16 +2,9 @@
 @vite(['resources/css/user/booking/index.css','resources/css/layouts/index.css'])
 
 @section('content')
-
+@include('components.navigasi-user.index')
 <section class="room-page">
 
-    <div class="page-title">
-        <h1>Temukan Ruangan</h1>
-        <div class="line"></div>
-        <p>
-            Temukan ruangan terbaik untuk rapat, seminar, praktikum, dan berbagai kegiatan lainnya.
-        </p>
-    </div>
 
     <section class="container-rooms">
 
