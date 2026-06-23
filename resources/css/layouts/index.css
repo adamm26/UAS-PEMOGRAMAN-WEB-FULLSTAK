@@ -35,6 +35,7 @@ button {
     border: transparent;
     background-color: transparent;
 }
-.container-main {
+.main-container {
+    width: 100%;
     padding: 7rem 0 0 0;
 }

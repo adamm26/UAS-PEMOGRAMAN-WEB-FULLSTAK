@@ -1,8 +1,10 @@
 .lp-wrapper {
     font-family: var(--font-primary);
-    color: #0f1117;
+    /* color: #0f1117; */
     background: #f8f9fa;
     overflow-x: hidden;
+
+    /* transform: translateY(-7rem); */
 }
 
 /* =========================================

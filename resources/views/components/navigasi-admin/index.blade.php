@@ -3,7 +3,10 @@
 <header class="header">
     <div class="container-profil">
         <figure></figure>
-        <h3>Admin</h3>
+        <span>
+            <p>Admin</p>
+            <p>example@gmail.com</p>
+        </span>
     </div>
     <div class="container-hamburger">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,6 +66,28 @@
                     <span>Users</span>
                 </a>
 
+                <a href="{{ route('index-rooms') }}" class="{{ request()->routeIs('index-rooms*') ? 'active' : '' }}">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                            <!-- Dinding ruangan -->
+                            <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10H3V7z" />
+
+                            <!-- Pintu -->
+                            <path d="M10 17V12h4v5" />
+
+                            <!-- Jendela -->
+                            <path d="M7 9h2v2H7z" />
+                            <path d="M15 9h2v2h-2z" />
+
+                            <!-- Lantai -->
+                            <path d="M2 17h20" />
+                        </svg>
+                    </span>
+                    <span>Rooms</span>
+                </a>
+
                 <a href="{{ route('facility-index') }}" class="{{ request()->routeIs('facility-*') ? 'active' : '' }}">
                     <span class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -84,8 +109,8 @@
                 <a href="{{ route('index-category') }}"
                     class="{{ request()->routeIs('index-category') ? 'active' : '' }}">
                     <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20.59 13.41 11 3H4v7l9.59 9.59a2 2 0 0 0 2.82 0l4.18-4.18a2 2 0 0 0 0-2.82z" />
                             <circle cx="7.5" cy="7.5" r="1.5" />
                         </svg>
@@ -94,6 +119,7 @@
                 </a>
             </section>
         </section>
+        @include('components.navigasi-admin.btn-logout')
     </section>
 </header>
 <div class="bg-blur"></div>

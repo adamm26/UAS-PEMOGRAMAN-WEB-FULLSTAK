@@ -34,18 +34,6 @@
         @enderror
     </div>
 
-    <div>
-        <label for="password_confirmation">Ulangi Password</label>
-        <input
-            type="password"
-            id="password_confirmation"
-            name="password_confirmation"
-            placeholder="Ulangi password Anda"
-        >
-        @error('password_confirmation')
-            <span>{{ $message }}</span>
-        @enderror
-    </div>
 
     <button type="submit">Masuk</button>
 
