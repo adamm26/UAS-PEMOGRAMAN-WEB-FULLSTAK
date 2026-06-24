@@ -26,6 +26,16 @@
     outline: 1px solid var(--border);
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
+.container-profil-kosong span {
+    display: inline-flex;
+    height: 100%;
+    border-radius: 35%;
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--base);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
 
 .container-profil figure::before {
     content: "";
@@ -38,7 +48,8 @@
     right: 0;
 }
 
-.container-profil span p {
+.container-profil span p,
+.container-profil span a {
     margin-left: 1rem;
     font-family: var(--font-primary);
     color: var(--text);

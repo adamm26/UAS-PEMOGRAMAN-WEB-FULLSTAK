@@ -10,7 +10,7 @@
     <div class="menu-dropdown">
         <ul>
             <li>
-                <a href="">
+                <a href="{{ route('profil-index') }}">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -61,7 +61,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: var(--accent);
+        color: var(--text);
         border-radius: 50%;
         cursor: pointer;
         transition: .3s;
@@ -108,7 +108,7 @@
     .menu-dropdown a {
         display: flex;
         align-items: center;
-        padding: 5px 20px;
+        padding: 5px 10px;
         color: var(--text);
         text-decoration: none;
         font-size: .95rem;

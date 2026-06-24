@@ -1,5 +1,5 @@
 <section class="container-search">
-    <input type="text">
+    <input type="text" placeholder="cari ruangan...">
     <button class="btn-search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
@@ -12,7 +12,7 @@
 <style>
     .container-search {
         position: relative;
-        height: 50px;
+        height: 35px;
         /* Atur tinggi sesuai kebutuhan */
         width: 40rem;
         border-radius: 15px;
@@ -34,14 +34,15 @@
         outline: none;
         /* Menghilangkan garis biru saat diklik */
         background: transparent;
+        font-family: var(--font-primary);
     }
 
     .btn-search {
         position: absolute;
-        height: 80%;
+        height: 100%;
         margin-right: 1rem;
-        padding: 7px;
-        color: var(--accent);
+        padding: 3px;
+        color: var(--border);
         /* background-color: red; */
         aspect-ratio: 1/1;
         right: 0;

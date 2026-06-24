@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminRooms;
 use App\Http\Controllers\Admin\AdminUsers;
 use App\Http\Controllers\Admin\AdminFacilities;
 use App\Http\Controllers\User\UserBooking;
+use App\Http\Controllers\User\ProfilController;
 use App\Http\Controllers\Auth\Signup;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/user')->group(function(){
     Route::get('/booking',[UserBooking::class,'index'])->name('index-user');
     Route::get('booking/detail/{id}',[UserBooking::class,'bookingDetail'])->name('booking-detail');
+    Route::get('/profil',[ProfilController::class,'index'])->name('profil-index');
 });
 
 Route::prefix('admin')->group(function () {
