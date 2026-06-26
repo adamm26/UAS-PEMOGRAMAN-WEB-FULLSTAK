@@ -44,7 +44,7 @@
         height: 3rem;
         aspect-ratio: 1/1;
         color: var(--danger);
-        padding:10px;
+        padding:12px;
     }
 
     .btn-logout span:nth-child(2) {
