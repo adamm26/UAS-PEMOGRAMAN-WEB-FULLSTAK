@@ -14,9 +14,8 @@
                 </div>
         </figure>
         <span>
-           {{-- Mengecek apakah user sudah login agar tidak terjadi error --}}
         @if(Auth::check())
-            <a href="" >{{ Auth::user()->name }}</a> {{-- Ganti 'username' dengan 'name' jika di database kamu namanya 'name' --}}
+            <a href="" >{{ Auth::user()->name }}</a>
             <p>{{ Auth::user()->email }}</p>
         @else
             <a href="">Guest</a>
