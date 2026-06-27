@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('components.navigasi-admin.index')
 
     {{-- CSS KUNCI: Langsung rapi, estetik di tengah, tanpa merusak file layout kelompok --}}
     <style>
         .page-wrapper {
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            width: 100%; 
-            min-height: 85vh; 
-            padding: 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 85vh;
+            padding: 20px;
             box-sizing: border-box;
             background-color: #f3f4f6;
         }
-        
+
         .form-container {
             background-color: #ffffff;
             width: 100%;
