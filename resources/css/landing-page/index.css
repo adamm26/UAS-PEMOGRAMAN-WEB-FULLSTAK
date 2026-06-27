@@ -1,28 +1,3 @@
-/* =============================================
-   resources/css/landing-page/index.css
-   Landing Page — Booking Venue Kota Madiun
-   ============================================= */
-
-/* ---- Reset ---- */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-img {
-    display: block;
-    max-width: 100%;
-}
-a {
-    text-decoration: none;
-}
-ul,
-li {
-    list-style: none;
-}
-
 /* ---- Wrapper ---- */
 .lp-wrapper {
     font-family: var(--font-primary, "Outfit"), sans-serif;
@@ -359,9 +334,9 @@ li {
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(30, 58, 95, 0.3) 0%,
-        rgba(30, 58, 95, 0.5) 35%,
-        rgba(10, 20, 40, 0.9) 100%
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.5) 35%,
+        rgba(0, 0, 0, 0.9) 100%
     );
 }
 
