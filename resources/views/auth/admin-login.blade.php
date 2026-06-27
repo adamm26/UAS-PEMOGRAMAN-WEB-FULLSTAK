@@ -114,7 +114,21 @@
 
 </div>
 
-    <div class="form-actions">
+   <div class="remember-wrapper">
+
+       <label class="remember-label">
+
+        <input
+            type="checkbox"
+            class="remember-checkbox">
+
+        <span>Ingat Saya</span>
+
+       </label>
+
+</div>
+
+   <div class="form-actions">
 
     <button
         type="submit"
@@ -124,9 +138,38 @@
 
     </button>
 
+    <a
+        href="{{ route('landing-page') }}"
+        class="btn-secondary">
+
+        <i class="bi bi-chevron-left"></i>
+
+        Kembali
+
+    </a>
+
 </div>
 
 </form>
+
+    <div class="login-divider"></div>
+    <div class="login-footer">
+
+        <p class="footer-text">
+
+         Belum punya akun?
+
+        </p>
+
+    <a
+        href="{{ route('signup-page') }}"
+        class="signup-link">
+
+        Daftar di sini
+
+    </a>
+
+</div>
 
 @if ($errors->any())
     <ul class="error-list">
@@ -165,8 +208,8 @@ toggleConfirmPassword.addEventListener('click', function () {
 
     confirmPassword.setAttribute('type', type);
 
-    this.classList.toggle('fa-eye');
-    this.classList.toggle('fa-eye-slash');
+    this.classList.toggle('bi-eye-fill');
+    this.classList.toggle('bi-eye-slash-fill');
 
 });
 
