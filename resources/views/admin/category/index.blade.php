@@ -2,70 +2,249 @@
 
 @section('content')
     @include('components.navigasi-admin.index')
+    
     <section class="main-container">
-        <h1>Daftar Kategori</h1>
+        <div class="header-title-wrapper">
+            <h1 class="ui-title">Daftar Kategori</h1>
+            <div class="ui-underline"></div>
+        </div>
 
         @if (session('success'))
-            <p>{{ session('success') }}</p>
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         @endif
 
-        <a href="{{ route('category-create') }}">Tambah Kategori</a>
+        <div class="action-header">
+            <a href="{{ route('category-create') }}" class="btn-primary">Tambah Kategori</a>
+        </div>
 
-        <table border="1" cellpadding="8" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama</th>
-                    <th>Status</th>
-                    <th>Approval</th>
-                    <th>Urutan</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($dataCategory as $category)
+        <div class="table-responsive">
+            <table class="ui-table">
+                <thead>
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
-
-
-                        <td>
-                            {{ $category->is_active ? 'Aktif' : 'Tidak Aktif' }}
-                        </td>
-                        <td>
-                            {{ $category->requires_approval ? 'Ya' : 'Tidak' }}
-                        </td>
-                        <td>{{ $category->sort_order }}</td>
-                        <td>
-                            <a href="{{ route('category-view', $category->id) }}">
-                                Detail
-                            </a>
-
-                            |
-
-                            <a href="{{ route('category-update', $category->id) }}">
-                                Edit
-                            </a>
-                            |
-                            <form action="{{ route('category-destroy', $category->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="submit"
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
-                                    Hapus
-                                </button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Status</th>
+                        <th>Approval</th>
+                        <th>Urutan</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="8">
-                            Tidak ada data kategori.
-                        </td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse($dataCategory as $category)
+                        <tr>
+                            <td><strong>{{ $category->id }}</strong></td>
+                            <td>{{ $category->name }}</td>
+                            <td>
+                                <span class="badge {{ $category->is_active ? 'badge-success' : 'badge-danger' }}">
+                                    {{ $category->is_active ? 'Aktif' : 'Tidak Aktif' }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge {{ $category->requires_approval ? 'badge-warning' : 'badge-secondary' }}">
+                                    {{ $category->requires_approval ? 'Ya' : 'Tidak' }}
+                                </span>
+                            </td>
+                            <td>{{ $category->sort_order }}</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ route('category-view', $category->id) }}" class="btn-action btn-view">
+                                        Detail
+                                    </a>
+                                    
+                                    <a href="{{ route('category-update', $category->id) }}" class="btn-action btn-edit">
+                                        Edit
+                                    </a>
+                                    
+                                    <form action="{{ route('category-destroy', $category->id) }}" method="POST" class="inline-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-action btn-delete"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center empty-row">
+                                Tidak ada data kategori.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </section>
 @endsection
+
+
+<style>
+    /* --- UI Global Override & Font --- */
+.main-container {
+    font-family: var(--font-secondary), sans-serif;
+    color: var(--text);
+    /* background-color: var(--base); */
+    padding: 2rem;
+    border-radius: 16px;
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); */
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* --- Judul ala Form "Buat Akun" --- */
+.header-title-wrapper {
+    margin-bottom: 25px;
+}
+
+.ui-title {
+    font-family: var(--font-primary), sans-serif;
+    font-size: 2rem;
+    color: var(--secondary);
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.ui-underline {
+    width: 50px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* --- Tombol Utama (Style "Daftar Sekarang") --- */
+.action-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: #ffffff;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+/* --- Desain Tabel --- */
+.table-responsive {
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ui-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.ui-table th {
+    background-color: #f8f9fa;
+    color: var(--secondary);
+    font-weight: 700;
+    padding: 16px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.ui-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    vertical-align: middle;
+}
+
+.ui-table tbody tr:hover {
+    background-color: rgba(238, 238, 238, 0.4);
+}
+
+/* --- Badges / Status --- */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.badge-success { background-color: #e2f5ea; color: #137333; }
+.badge-danger { background-color: #fce8e6; color: #c5221f; }
+.badge-warning { background-color: #fef7e0; color: #b06000; }
+.badge-secondary { background-color: #f1f3f4; color: #5f6368; }
+
+/* --- Tombol Aksi (Style "Kembali") --- */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-action {
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    display: inline-block;
+}
+
+.btn-view {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+.btn-view:hover { background-color: #eef2f3; }
+
+.btn-edit {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+.btn-edit:hover { background-color: var(--accent); color: #fff; }
+
+.btn-delete {
+    border: 1px solid #d93025;
+    color: #d93025;
+}
+.btn-delete:hover { background-color: #d93025; color: #fff; }
+
+.inline-form {
+    display: inline;
+    margin: 0;
+}
+
+/* --- Alert & Empty State --- */
+.alert-success {
+    background-color: #e2f5ea;
+    color: #137333;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #137333;
+}
+.empty-row {
+    text-align: center;
+    color: #888;
+    padding: 30px !important;
+}
+.text-center { text-align: center; }
+</style>
