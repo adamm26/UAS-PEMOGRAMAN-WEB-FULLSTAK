@@ -1,200 +1,100 @@
 @extends('layouts.app')
-@vite([
-    'resources/css/landing-page/index.css',
-    'resources/css/auth/admin-login.css'
-])
+
+@vite(['resources/css/landing-page/index.css', 'resources/css/auth/admin-login.css'])
 
 @section('content')
+    <section class="main-container">
 
-<main class="login-wrapper">
+        <section class="login-wrapper">
+            <div class="login-card">
 
-    <div class="login-card">
+                <div class="login-header">
+                    <h1 class="login-title">Masuk</h1>
+                    <div class="title-line"></div>
+                    <p class="login-subtitle">
+                        Selamat datang dilogin page admin
+                    </p>
+                </div>
 
-        <div class="login-header">
-            <h1 class="login-title">Login ke Akun</h1>
-            <p class="login-subtitle">
-                Silakan login dulu sebelum mengakses ke halaman
+                <form class="login-form" action="{{ route('admin.login.submit') }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">
+                            EMAIL
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email"
+                                class="form-input @error('email') is-invalid @enderror" placeholder="Masukkan email Anda"
+                                value="{{ old('email') }}" required>
+                        </div>
+                        @error('email')
+                            <span class="form-error">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">
+                            PASSWORD
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" class="form-input @error('password') is-invalid @enderror" id="password"
+                                name="password" placeholder="Masukkan password Anda" required>
+                            <i class="bi bi-eye-slash right-icon" id="togglePassword">
+                            </i>
+                        </div>
+                        @error('password')
+                            <span class="form-error">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="remember-wrapper">
+                        <label class="remember-label">
+                            <input type="checkbox" name="remember" class="remember-checkbox">
+                            <span>Ingat saya</span>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            Masuk
+                        </button>
+                        <a href="{{ route('landing-page') }}" class="btn-secondary">
+                            <i class="bi bi-chevron-left"></i> Kembali
+                        </a>
+                    </div>
+
+                </form>
+
+                {{-- <div class="login-footer">
+            <p class="footer-text">
+                Belum punya akun?
+                <a href="{{ route('signup-page') }}" class="signup-link">
+                    Daftar di sini
+                </a>
             </p>
-        </div>
+        </div> --}}
 
-        <form
-            class="login-form"
-            action="{{ route('admin.login.submit') }}"
-            method="POST">
-    @csrf
+            </div>
+        </section>
 
-    <div class="form-group">
+    </section>
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
 
-        <label class="form-label">
-            Email
-        </label>
+        togglePassword.addEventListener('click', function() {
+            // Toggle attribute type
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
 
-    <div class="input-wrapper">
-
-        <i class="bi bi-person-fill left-icon"></i>
-
-        <input
-             type="email"
-             id="email"
-             name="email"
-             class="form-input"
-             placeholder="Masukkan Email Anda">
-
-    </div>
-
-        @error('email')
-             <span class="form-error">
-                 {{ $message }}
-             </span>
-        @enderror
-
-</div>
-
-   <div class="form-group">
-
-        <label class="form-label">
-            Password
-        </label>
-
-    <div class="input-wrapper">
-
-        <i class="bi bi-lock-fill left-icon"></i>
-
-        <input
-            type="password"
-            class="form-input"
-            id="password"
-            name="password"
-            placeholder="Masukkan Password">
-
-        <i
-           class="bi bi-eye-slash-fill right-icon"
-           id="togglePassword">
-        </i>
-
-    </div>
-
-        @error('password')
-            <span class="form-error">
-                {{ $message }}
-            </span>
-        @enderror
- 
-</div>
-
-   <div class="form-group">
-
-       <label class="form-label">
-           Konfirmasi Password
-       </label>
-
-    <div class="input-wrapper">
-
-        <i class="bi bi-lock-fill left-icon"></i>
-
-
-</div>
-
-   <div class="remember-wrapper">
-
-       <label class="remember-label">
-
-        <input
-            type="checkbox"
-            class="remember-checkbox">
-
-        <span>Ingat Saya</span>
-
-       </label>
-
-</div>
-
-   <div class="form-actions">
-
-    <button
-        type="submit"
-        class="btn-primary">
-
-        Masuk
-
-    </button>
-
-    <a
-        href="{{ route('landing-page') }}"
-        class="btn-secondary">
-
-        <i class="bi bi-chevron-left"></i>
-
-        Kembali
-
-    </a>
-
-</div>
-
-</form>
-
-    <div class="login-divider"></div>
-    <div class="login-footer">
-
-        <p class="footer-text">
-
-         Belum punya akun?
-
-        </p>
-
-    <a
-        href="{{ route('signup-page') }}"
-        class="signup-link">
-
-        Daftar di sini
-
-    </a>
-
-</div>
-
-@if ($errors->any())
-    <ul class="error-list">
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
-
-<script>
-
-const togglePassword = document.getElementById('togglePassword');
-const password = document.getElementById('password');
-
-togglePassword.addEventListener('click', function () {
-
-    const type = password.getAttribute('type') === 'password'
-        ? 'text'
-        : 'password';
-
-    password.setAttribute('type', type);
-
-    this.classList.toggle('bi-eye-fill');
-    this.classList.toggle('bi-eye-slash-fill');
-
-});
-
-const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-const confirmPassword = document.getElementById('password_confirmation');
-
-toggleConfirmPassword.addEventListener('click', function () {
-
-    const type = confirmPassword.getAttribute('type') === 'password'
-        ? 'text'
-        : 'password';
-
-    confirmPassword.setAttribute('type', type);
-
-    this.classList.toggle('bi-eye-fill');
-    this.classList.toggle('bi-eye-slash-fill');
-
-});
-
-</script>
-
+            // Toggle icon classes
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+    </script>
 @endsection
-
