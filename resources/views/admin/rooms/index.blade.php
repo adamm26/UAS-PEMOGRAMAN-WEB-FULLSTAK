@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('components.navigasi-admin.index')
+    @include('components.navigasi-admin.index')
     <section class="main-container">
         <h1>Daftar Ruangan</h1>
 
@@ -9,7 +9,6 @@
             Tambah Ruangan
         </a>
 
-        <br><br>
 
         <table border="1" cellpadding="10" cellspacing="0">
             <thead>
