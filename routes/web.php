@@ -21,7 +21,7 @@ route::get('/signup', function () {
 })->name('signup-page');
 
 
-// hallo semuanya
+// hallo semuanyaasaojsoajsoas
 
 Route::prefix('/user')->group(function () {
     // route public
