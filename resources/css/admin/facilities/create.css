@@ -9,12 +9,12 @@
 }
 
 .form-container {
-    background-color: #ffffff;
+    background-color: var(--base);
     width: 100%;
     max-width: 500px;
     padding: 2.5rem;
     border-radius: 16px;
-    border: 2px solid #d9a036; /* Warna kuning emas khas proyek kelompokmu */
+     border: 2px solid var(--border); 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
